@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AlphaTrack · Alpha Electronics Sdn. Bhd.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet">
+  <?!= include('Styles'); ?>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <svg class="brand-logo" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="at-tile" x1="3" y1="1" x2="37" y2="39" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#7286FF"/><stop offset="0.52" stop-color="#4F46E5"/><stop offset="1" stop-color="#7C3AED"/>
+            </linearGradient>
+            <radialGradient id="at-shine" cx="11" cy="5" r="24" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.38"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="40" height="40" rx="12" fill="url(#at-tile)"/>
+          <rect width="40" height="40" rx="12" fill="url(#at-shine)"/>
+          <path d="M10.6 29.6 L20 9.8 L29.4 29.6" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="23.6" r="4.1" fill="#5EEAD4" fill-opacity="0.24"/>
+          <circle cx="20" cy="23.6" r="2.4" fill="#5EEAD4"/>
+        </svg>
+        <div>
+          <div class="brand-name">Alpha<span>Track</span></div>
+          <div class="brand-tag">Stay ahead of every supplier expiry</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <div class="nav-group">Monitor</div>
+        <button type="button" class="nav-item" data-page="overview" data-crumb="Overview">
+          <span data-icon="dashboard"></span><span class="nav-label">Overview</span>
+        </button>
+        <div class="nav-group">Manage</div>
+        <button type="button" class="nav-item" data-page="suppliers" data-crumb="Suppliers &amp; Documents">
+          <span data-icon="building"></span><span class="nav-label">Suppliers &amp; Documents</span>
+        </button>
+        <div class="nav-group">Intelligence</div>
+        <button type="button" class="nav-item" data-page="ai" data-crumb="AI Document Analysis">
+          <span data-icon="sparkles"></span><span class="nav-label">AI Document Analysis</span>
+        </button>
+        <button type="button" class="nav-item" data-page="risk" data-crumb="Expiry &amp; Risk">
+          <span data-icon="clock"></span><span class="nav-label">Expiry &amp; Risk</span>
+        </button>
+        <button type="button" class="nav-item" data-page="notifications" data-crumb="Notifications &amp; Renewals">
+          <span data-icon="mail"></span><span class="nav-label">Notifications &amp; Renewals</span>
+        </button>
+      </nav>
+      <div class="side-foot">
+        <a class="side-link" id="sheet-link" href="#" target="_blank" rel="noopener" hidden><span data-icon="database"></span>Open the database</a>
+        <div class="user-card">
+          <span class="avatar side" id="user-avatar" aria-hidden="true">AE</span>
+          <div class="user-meta"><div class="user-name" id="user-email">Signed in</div><div class="user-role">Alpha Electronics · Demo account</div></div>
+        </div>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="btn btn-secondary btn-icon menu-btn" id="menu-btn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false"><span data-icon="menu"></span></button>
+        <div class="crumbs"><span class="crumb-root">Alpha Electronics</span><span data-icon="chevronRight" data-size="14" aria-hidden="true"></span><strong id="crumb-current">Overview</strong></div>
+        <span class="topbar-spacer"></span>
+        <form class="search" id="global-search" role="search">
+          <span data-icon="search" data-size="16"></span>
+          <label class="visually-hidden" for="global-search-input">Search suppliers</label>
+          <input id="global-search-input" type="search" placeholder="Search suppliers, IDs, registration no." autocomplete="off">
+        </form>
+        <span class="date-pill" id="today-label"><span data-icon="calendar" data-size="15"></span><span>Today</span></span>
+      </header>
+      <div id="app-banner" class="banner warn" role="alert" hidden></div>
+
+      <main class="content" id="content" tabindex="-1">
+        <section class="page" id="page-overview" hidden aria-label="Overview"></section>
+
+        <section class="page" id="page-suppliers" hidden aria-label="Suppliers and Documents">
+          <?!= include('M1_Page'); ?>
+        </section>
+
+        <section class="page" id="page-ai" hidden aria-label="AI Document Analysis">
+          <?!= include('M2_Page'); ?>
+        </section>
+        <section class="page" id="page-risk" hidden aria-label="Expiry and Risk">
+          <?!= include('M3_Page'); ?>
+        </section>
+        <section class="page" id="page-notifications" hidden aria-label="Notifications and Renewals">
+          <?!= include('M4_Page'); ?>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast-region" aria-live="polite" aria-atomic="false"></div>
+  <div id="modal-root"></div>
+
+  <?!= include('AppClient'); ?>
+  <?!= include('OverviewClient'); ?>
+  <?!= include('M1_Client'); ?>
+  <?!= include('M2_Client'); ?>
+  <?!= include('M3_Client'); ?>
+  <?!= include('M4_Client'); ?>
+</body>
+</html>

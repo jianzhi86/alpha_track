@@ -1,0 +1,35 @@
+<!-- M1_Page · Member 1: Supplier & Document Management. Rendered by M1_Client. -->
+<div id="m1-list-view" class="section-gap">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">Manage</div>
+      <h1 class="page-title">Suppliers &amp; Documents</h1>
+      <p class="page-sub">Register suppliers that Procurement has already approved, choose the documents each one must provide, and keep their contracts, licences and certificates up to date.</p>
+    </div>
+    <div class="head-actions">
+      <button type="button" class="btn btn-primary" id="m1-add"><span data-icon="plus" data-size="16"></span>Add existing supplier</button>
+    </div>
+  </div>
+  <div class="tiles" id="m1-status-cards" role="group" aria-label="Filter by registration status"></div>
+  <div class="card">
+    <div class="toolbar">
+      <div class="search">
+        <span data-icon="search" data-size="16"></span>
+        <label class="visually-hidden" for="m1-search">Search suppliers</label>
+        <input id="m1-search" type="search" placeholder="Search name, ID or registration no." autocomplete="off">
+      </div>
+      <label class="visually-hidden" for="m1-filter-category">Category</label>
+      <select class="select" id="m1-filter-category"><option value="">All categories</option></select>
+      <label class="visually-hidden" for="m1-filter-status">Registration status</label>
+      <select class="select" id="m1-filter-status"><option value="">All statuses</option></select>
+      <span class="count" id="m1-count" aria-live="polite"></span>
+    </div>
+    <div id="m1-table" class="table-wrap"></div>
+  </div>
+</div>
+
+<!-- One file picker for every "Choose file" button. It sits outside the views so a re-render never removes it mid-choice. -->
+<input type="file" id="m1-file-input" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" hidden tabindex="-1" aria-hidden="true">
+
+<div id="m1-wizard-view" class="section-gap" hidden></div>
+<div id="m1-detail-view" class="section-gap" hidden></div>
